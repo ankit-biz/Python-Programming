@@ -1,5 +1,5 @@
 #############################FUNCTION############################
-'''funtion is a set of code, which ones created, they can be used throughout program
+''' Function is a set of code, which ones created, they can be used throughout program
 Functions allow you to break down your code into smaller, manageable,
 and reusable pieces, which makes your code more modular and easier to understand.'''
 '''Advantage Why Use Functions?
@@ -7,26 +7,90 @@ Avoid code repetition
 Increase readability and modularity
 Easier debugging and maintenance.'''
 
-#Syntax  def function_name(parameters):
+# Types of functions
+'''
+1. Built-in Functions
+These are pre-defined functions in Python that perform common operations.
+
+Examples: print(), len(), type(), input(), sum(), max(), min(), etc.
+
+2. User-Defined Functions
+Functions created by users to perform specific tasks.
+
+def greet(name):
+    return f"Hello, {name}!"
+print(greet("Ankit"))
+
+3. Anonymous (Lambda) Functions
+Functions without a name, usually used for short, single-line expressions.
+
+square = lambda x: x * x
+print(square(5))  # Output: 25
+
+4. Recursive Functions
+Functions that call themselves to solve a problem.
+
+def factorial(n):
+    if n == 1:
+        return 1
+    return n * factorial(n - 1)
+print(factorial(5))  # Output: 120
+
+5. Higher-Order Functions
+Functions that take other functions as arguments or return functions. Examples: map(), filter(), reduce()
+
+numbers = [1, 2, 3, 4, 5]
+squared = list(map(lambda x: x ** 2, numbers))
+print(squared)  # Output: [1, 4, 9, 16, 25]
+
+6. Generator Functions
+Functions that yield values using yield, allowing iteration without storing all values in memory.
+
+def count_up_to(n):
+    count = 1
+    while count <= n:
+        yield count
+        count += 1
+gen = count_up_to(3)
+print(next(gen))  # Output: 1
+print(next(gen))  # Output: 2
+
+7. Decorator Functions
+Functions that modify other functions without changing their structure.
+
+def decorator(func):
+    def wrapper():
+        print("Before function call")
+        func()
+        print("After function call")
+    return wrapper
+
+@decorator
+def say_hello():
+    print("Hello!")
+
+say_hello()'''
+# ----------------------------------------------------------------------------------------------------------------
+# Basic Syntax of user defined function:
+# def function_name(parameters):
 #            """Docstring (optional)"""
-#               # Function body
+#                # Function body
 #            return value  # Optional
 
 def one():
     print("First Function")
-
 one()
 
 def mul():
     a=21
     b=9
     print(a*b)
-
 mul()
 
 def name():
     print("this is the new beginning")
 
+# Different ways for creating a user-defined functions
 #----------------------1. Function Arguments (Parameters)-----------------------
 # Functions can accept arguments (inputs) to perform operations. Python supports several types of arguments:
 '''Types of Function Arguments
@@ -41,20 +105,21 @@ They act as placeholders for the values that will be passed to the function when
 def add_numbers(a, b):  # a and b are parameters
     return  a+b
 
-la=add_numbers(2,4)     #   Correct: Pass two positional  argunments values
+la=add_numbers(2,4)     #   Correct: Pass two positional -> 2, 4 are argunments values
 print(la)
 print(add_numbers(23,2))
 
-# b. Keyword Arguments
+# b. Keyword Arguments  ->
 def ka(nickname,name):
     print(f"You know i have two name first one my documented name is \"{name}\" and another name that my family call me it is \"{nickname}\"")
 
 ka(name='Ankit Verma',nickname='Anurag')      # Keyword arguments
 
 # c. Default Arguments
-def da(naam="King"):
+def da(naam="King"):        # default algument (naam="King")
     print(f"hello {naam}")
-da()            # Uses default value
+
+da()
 print(da("Kaam"))  # Overrides default value
 #------------------------------------------------------
 def greet(name, message="Hello"):       # Default arguments should always be at the end!
@@ -106,7 +171,7 @@ def RS(a,b):
 print(RS(12,2))
 
 def MRV(a,b):        #Multiple Return Values. Python functions can return multiple values as a tuple.
-    return a + b, a - b,a * b
+    return a + b, a - b, a * b
 add, diff, mul= MRV(12,44)
 print(add,diff,mul)
 
@@ -116,12 +181,13 @@ def none():         #A function without a return statement returns None:
 #--------------------------4. Scope of Variables (Local vs. Global)-------------------------
 #Local Scope (Inside the Function)--> A local variable is created inside a function and only accessible within that function.
 #Global Scope (Outside the Function)--> A global variable is declared outside the function and can be accessed anywhere.
-def local_var_Exa(a):
-    b=299           # local variable
-    print(f"a: {a} and b: {b} and sum is -> {a+b}")
-local_var_Exa(1)
+def area_of_circle(r):
+    pie=22/7           # local variable
+    print(f"pie: {pie} * {r}*{r} and  and sum is -> {pie*(r**2)}")
+area_of_circle(5)
+# -------------------------------------------------------------
 
-boxer=232   # global variable
+boxer = 232   # global variable
 def global_var_Exa():
     print(boxer)        # Accessing global variable
 global_var_Exa()
@@ -137,7 +203,7 @@ print(boxer)        # Now the value is changed
 
 #d. Nonlocal Variables The nonlocal keyword is used to modify a variable in the nearest enclosing scope
 def outer_function():
-    bud = 23  # Enclosing scope variable
+    bud = 23  # Enclosing scope variable (defination: variable defined in an outer function that is accessible inside an inner (nested) function.)
 
     def inner_function():
         nonlocal bud
@@ -166,10 +232,10 @@ Key Concepts in Recursion
 1. Base Case->  Definition: The condition under which the recursion stops. Purpose: Prevents infinite recursion by providing a terminating scenario.
 2. Recursive Case-> Definition: The part of the function where it calls itself with a modified argument. Purpose: Breaks the problem into smaller instances of the same problem.'''
 i=0
-def recur():        # default limit of calling recursion is 1000
+def recur():        # default limit of calling recursion is 1000 in python
     global i
-    i+= 1
-    print("I am milliniour",i)
+    i += 1
+    print("I am millionaire",i)
     recur()         # a function is called by itself
 recur()
 
@@ -204,7 +270,45 @@ print(sumittion(4))
 u= lambda b1,b2,b3: b2*(b1+b3)
 print(u(2,3,5))
 
-#----------------------------------------8. Docstrings---------------------------------------------
+# finding no. is even or odd
+m= lambda x : "Even" if x%2==0 else "Odd"
+print(m(39))
+
+# maximum no. in between two numbers
+o=lambda x,y: x if x > y else y
+print(o(24,43))
+
+# maximum no. in between three numbers
+cz=lambda d,g,t:d if d>g and d>t else(g if g>t else t)
+print(cz(3,143,65))
+
+# using map for iterate each element of list
+sd=[4,6,87,3]
+square=list(map(lambda x : x**2,sd))
+print(square)
+
+# using filter to extract even number from the list
+de=[4,23,67,98,123]
+even=list(filter(lambda x : x % 2 == 0,de))
+print(even)
+
+# calculator using lambda function
+operations = {
+    "add": lambda x, y: x + y,
+    "subtract": lambda x, y: x - y,
+    "multiply": lambda x, y: x * y,
+    "divide": lambda x, y: x / y if y != 0 else "Cannot divide by zero"
+}
+
+print(operations["add"](10, 5))       # Output: 15
+print(operations["multiply"](6, 7))   # Output: 42
+
+# Use lambda with sorted() to sort a list of students by name length.
+students = ["Ankit", "Ravi", "Amitabh", "Raj"]
+sorted_students = sorted(students, key=lambda x: len(x))
+print(sorted_students)  # Output: ['Raj', 'Ravi', 'Ankit', 'Amitabh']
+
+# --------------------------------------------8.Docstrings---------------------------------------------
 '''
 Docstrings are a fundamental part of Python programming, enabling you to document your code effectively.
 They improve readability, support maintenance'''
@@ -275,7 +379,13 @@ length=list(filter(lambda x:len(x)>4,chota))
 print(length)
 
 # 3. reduce() – Reduce an Iterable to a Single Value
-# The reduce() function applies a function cumulatively to the elements of an iterable.------DOUBT
+# The reduce() function applies a function cumulatively to the elements of an iterable.
+from functools import reduce
+
+numbers = [4, 8, 2, 10, 5]
+max_num = reduce(lambda x, y: x if x > y else y, numbers)
+
+print(max_num)  # Output: 10
 
 #-----------------------------------------------------Decorator---------------------------------------------------------
 '''A decorator is a function that takes another function as an argument, extends or modifies its behavior, and returns a new function.
@@ -307,7 +417,7 @@ def dec(func):
         print("Good Morning")
         func(**kwargs)  # Pass the arguments to func
         print("Nice to meet you")
-    return execute  # Return the function, not the result
+    return execute  # Return the function not the result
 
 @dec
 def my(name):
@@ -318,13 +428,13 @@ my(name="hhh")
 # Multiple decoration
 def deco_Uppercase(func):
     def wrapper():
-        result=func().upper()
+        result = func().upper()
         return result
     return wrapper
 
 def deco_split(func):
     def wrapper():
-        result=func().split()
+        result = func().split()
         return result
     return wrapper
 
