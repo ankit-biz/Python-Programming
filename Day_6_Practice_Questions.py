@@ -138,3 +138,61 @@ for i in I:
     if i in vowels:
         count +=1
 print(count)
+
+# ------------------------------------------ Practice----function
+# 1.Write a function that takes two numbers and returns their sum.
+def sum(a,b):
+    formula=a+b
+    return formula
+print(sum(64,5))
+
+# 2.Create a function that takes a string and returns its reverse.
+def re(a):
+    asa=a[::-1]
+    return asa
+print(re("Ankit"))
+
+# 3.Write a function that checks whether a given number is even or odd.
+def check(a):
+    if a%2==0:
+        print(f"{a} is a even number")
+    else:
+        f"{a} is a odd number"
+check(4634364)
+
+# 4.Create a function that takes a list and returns the largest element.
+lis=[32,432,64,243,643,75]
+def largest():
+    ck=max(lis)
+    print(ck)
+largest()
+
+# 5.Write a function that takes two numbers and returns the greater #on
+def two(number1, number2):
+    if number1>number2:
+        return f"{number1} is greater than {number2}"
+    else:
+        return f"{number2} is greater than {number1}"
+
+print(two(43,4))
+
+# 6.Write a function that accepts a name and age as arguments and prints a greeting message.
+def message(name, age):
+    return f"Hi {name} welcome to our team, and according to your age {age}, you touched the success"
+
+print(message("anmkit",21))
+
+# 7.Create a function that returns multiple values (sum, difference, product, and quotient) of two numbers.
+def calc(a,b):
+    sum=a+b
+    difference=a-b
+    product=a*b
+    quotient=a/b
+    yield  sum,difference,product,quotient
+a=calc(13,345)
+print(a)
+
+# 8.Write a function that takes a list and returns a tuple containing the sum and average of the list elements.
+
+# 9.Implement a function that takes default arguments and returns a greeting message.
+# 10.Create a function that accepts *args and returns the sum of all numbers passed to it.
