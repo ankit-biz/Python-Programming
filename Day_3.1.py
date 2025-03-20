@@ -1,148 +1,131 @@
-########################LOOPS (for & while)########################
-#loop is to repeat something in the exact same way or Used to iterate over a sequence (list, tuple, string, range). Types
+#------------------------------Python Built-in Functions-------------------------------------
+'''Python provides a rich set of built-in functions that can be used without needing to import any module.
+These functions help perform various operations like data type conversions, mathematical calculations, input/output operations, and more.'''
 
-#1. for     (Syntax : for variable in sequence: # Code to execute)
+#----------------1. Input/Output Functions
+# a). print() – Display Output
+print("Hello, World!")  # Output: Hello, World!
+print(10, 20, 30, sep="-")  # Output: 10-20-30
+print("Python", end="!")  # Output: Python!
 
-fruuits = ['Apple', 'Banana', 'Cherry', 'Dragon Fruit','Fish']
-for fruit in fruuits:
-    print(fruuits)      # print according to the number of data.
+# b). input() – Take User Input
+name = input("Enter your name: ")       # Accepts input as a string by default.
+print("Hello,", name)
 
-for fruit in fruuits:
-    print(fruit)        # print each elements
+age = int(input("Enter your age: "))  # Converts input to integer
+print("Your age is:", age)
 
-for i in range(1,10):
-    print(i,end=" ")    # by using "end=" " it print the output in one line
+#-------------------------2. Type Conversion Functions
+# -> These functions convert data from one type to another.
+# a). int() – Convert to Integer
+print(int(3.7))  # Output: 3
+print(int("10"))  # Output: 10
 
-for i in range(10,1,-1):   # reverse loop
-    print(i)
+# b). float() – Convert to Floating Point Number
+print(float(5))  # Output: 5.0
+print(float("3.14"))  # Output: 3.14
 
-for i in range(1,10):
-    print("Hellow world!")
+# c). str() – Convert to String
+print(str(100))  # Output: '100'
+print(str(3.14))  # Output: '3.14'
 
-for i in range(1,11,2):     # gaps between the numbers
-    print(i)
+# d). bool() – Convert to Boolean
+print(bool(0))  # Output: False
+print(bool(10))  # Output: True
+print(bool(""))  # Output: False
 
-for i in range(0,5,2):
-    print(i)
+# e). list(), tuple(), set(), dict() – Convert to Respective Data
+print(list("hello"))  # Output: ['h', 'e', 'l', 'l', 'o']
+print(tuple([1, 2, 3]))  # Output: (1, 2, 3)
+#print(set([1, 2, 3]))  # Output: {1, 2, 3}
+print(dict([(1, 'a'), (2, 'b')]))  # Output: {1: 'a', 2: 'b'}
 
-table=int(input("Enter the number that you want to find the table \n"))         #table
+#---------------------------------- 3. Mathematical Functions
+# a). abs() – Absolute Value
+print(abs(-10))  # Output: 10
+print(abs(3.5))  # Output: 3.5
 
-for i in range(1,11):
-    print(f"{table} * {i} = {i*table}")
+# b). pow() – Power Calculation (x^y)
+print(pow(2, 3))  # Output: 8 (2^3)
+print(pow(5, 2))  # Output: 25 (5^2)
 
-# Looping Through Different Data Structures
-for j in 'Ankit':       #Iterating Over Strings
-    print(j)
+# c). round() – Round a Number
+print(round(3.14159, 2))  # Output: 3.14
+print(round(5.678))  # Output: 6 (default rounds to nearest integer)
 
-#Iterating Over a List with Index using enumerate(), it is for showing endex value for convenient
-fruuits= ['Apple', 'Banana', 'Cherry', 'Dragon Fruit','Fish']
-for index, fruit in enumerate(fruuits):
-    print(f"INDEX {index}:{fruuits}")
+# d). max() & min() – Find Maximum and Minimum
+numbers = [10, 20, 5, 40]
+print(max(numbers))  # Output: 40
+print(min(numbers))  # Output: 5
 
-#Iterating Over a Dictionary using .items()
-data={"name":"Ankit","qualification":"BCA","sex":"male","age":21}
-for key,value in data.items():
-    print(f"{key}:{value}")
+# e). sum() – Sum of All Elements in an Iterable
+print(sum([1, 2, 3, 4, 5]))  # Output: 15
 
-## For loop with conditional statement
-for i in range(1,101):
-    if i%3==0 and i%2==0:
-        print(i)
+#-------------------------------- 4. String Functions
+# a). len() – Get Length of String or Collection
+print(len("Python"))  # Output: 6
+print(len([1, 2, 3, 4]))  # Output: 4
 
-#2. while loop : it execute till the give condition if not true
+# b). ord() & chr() – Convert Characters to ASCII and Vice Versa
+print(ord("A"))  # Output: 65 (ASCII value of 'A')
+print(chr(97))  # Output: 'a' (Character with ASCII 97)
 
-count=1
-while count<=5:
-    print(count)
-    count += 1
-'''a1=int(input("Enter the number"))
-while a1<=10:
-    print(a1)
-    a1 +=1'''
+#-------------------------------5. Data Structure Functions
+# a). sorted() – Sort a List
+numbers = [4, 2, 9, 1]
+print(sorted(numbers))  # Output: [1, 2, 4, 9]
+print(sorted(numbers, reverse=True))  # Output: [9, 4, 2, 1]
 
-#3. while true: it is an infinite loop, to stop while true loop we used "break statement ".
-'''while True:    infinite loop
-    print("hello ankit")'''
+# b). enumerate() – Get Index and Value While Iterating
+fruits = ["apple", "banana", "cherry"]
+for index, fruit in enumerate(fruits):
+    print(index, fruit)
 
-'''while True:      # table with taking input value and consist of break
-    table = int(input("Enter the first value"))
+# c). zip() – Combine Two Iterables
+names = ["Alice", "Bob", "Charlie"]
+ages = [25, 30, 35]
 
-    for i in range(1,11):
-        print(f"{table} * {i}")
+combined = list(zip(names, ages))
+print(combined)  # Output: [('Alice', 25), ('Bob', 30), ('Charlie', 35)]
 
-    repeat = input("if you want to stop the Enter 'yes': ")
-    if repeat=="yes":
-        break'''
+#---------------------------------6. Functional Programming Functions
+# a). map() – Apply a Function to Each Element
+numbers = [1, 2, 3, 4]
+squared = list(map(lambda x: x**2, numbers))
+print(squared)  # Output: [1, 4, 9, 16]
 
-#4. nested : when loop inside a loop is called as nested loop. it is also used for solve pattern problems.
-'''for i in range(1,4):     # outer loop then inner loop
-    for j in range(1,10):
-        print(j, end="")
-    print()'''
+# b). filter() – Filter Elements Based on Condition
+numbers = [10, 20, 30, 15, 25]
+greater_than_20 = list(filter(lambda x: x > 20, numbers))
+print(greater_than_20)  # Output: [30, 25]
 
-'''for i in range(1,10):
-    for j in range(1,i+1):
-        print(j, end="")
-    print()
-'''
-for i in range(1, 4):
-    for j in range(1, 4):
-        print(f"{i} x {j} = {i * j}")
-    print()
+# c). reduce() – Reduce an Iterable to a Single Value
+from functools import reduce
+numbers = [1, 2, 3, 4]
+product = reduce(lambda x, y: x * y, numbers)
+print(product)  # Output: 24
 
-# Loop Control Statements (break, continue, pass)
-###################BREAK & CONTINUE STATEMENT######################
-#BREAK: it used when you want to destroy a loop at certain condition and come out of the loop.
-'''for i in range(1,10):
-    if i==6:
-        break
-    print(i)'''
-#CONTINUE: it used when you want to skip a particular condition.
-'''for i in range(1,10):
-    if i==3:
-        continue
-    else:
-        print(i)'''
-#PASS: The pass statement does nothing and acts as a placeholder.
-for i in range(2,3):
-    pass ## Placeholder for future code
+#---------------------------7. File Handling Functions
+# a). open() – Open a File
+file = open("demo.txt", "r")
+print(file.read())  # Read file content
+file.close()
 
-#write a program to sum all even number from 1 to 20
-'''sum=0
-for i in range(1,50):
-    if i%2==0:
-        sum +=i
-print("sum of all even numbers 1 to 50 is", sum)'''
+# b). write() – Write to a File
+file = open("demo.txt", "w")
+file.write("Hello, World!")
+file.close()
 
-#write a program to write first 20 numbers and their square rooths
+#-------------------------------8. Miscellaneous Functions
+# a). type() – Get Type of a Variable
+print(type(10))  # Output: <class 'int'>
+print(type("hello"))  # Output: <class 'str'>
+print(type([1, 2, 3]))  # Output: <class 'list'>
 
-'''for i  in range(1,21):
-    print(i,"=",i**2)'''
+# b). id() – Get Memory Address of an Object
+x = 10
+print(id(x))  # Unique ID of the variable
 
-#write a program to find the of first 10 odd numbers sum.
-'''sum=0
-x=0
-while x<=20:
-    if x%2 !=0:
-        sum += x
-    x+=1
-print(sum)
-'''
-#write a program if a number is divisible by 8 and 12 up to 100 numbers.
-'''for i in range(1,100):
-    if i%8==0 and i%12==0:
-        print(i)'''
-
-#write  a program to create billing system at supermart
-
-#pattern
-'''for i in range(1,7): #row
-    for j in range(1,i+1): #colum
-       # print(j,end="")
-        print(i, end="")
-    print()'''
-
-for i in range(1,7): #row
-    for j in range(7,i,-1): #colum
-        print(i, end="")
-    print()
+# c). eval() – Evaluate a String as Python Code
+expression = "10 + 5 * 2"
+print(eval(expression))  # Output: 20
